@@ -119,7 +119,7 @@ export default {
        margin-top: 100px;
    }
    .box{
-     width: 800px;
+     width: 60%;
      border: 5px solid yellow;
       margin: 0 auto;
      height: 400px;
@@ -154,10 +154,12 @@ export default {
    }
 
    .arrow .left {
-     left: 100px;
+     left: 10%;
+     width: 5%;
    }
    .arrow .right {
-       right: 100px;
+       right: 10%;
+       width: 5%;
        transform: rotateY(180deg) translateY(-50%);
    }
    .pagnator {
