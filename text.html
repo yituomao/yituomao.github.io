@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- <iframe src="47.97.179.26:443" id="proxy" style="display:none;" onload="loadDefaultData();"></iframe> -->
+		<script src="js/jquery.min.js"></script>
+		<script>
+			// document.domain = "47.97.179.26:443";
+			
+			
+			fetch('https://eniu.com/chart/pea/sh601318')
+			  .then(response => response.json())
+			  .then(data => {
+			    // data就是我们请求的repos
+			    console.log(data)
+			  });
+		</script>
+	</body>
+</html>
