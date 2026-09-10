@@ -1,0 +1,1188 @@
+/* ==========================================================================
+   FROM GLOSSY TO DIGITAL — full-screen slide deck
+   Style replicated from the reference Canva site: cream paper, slate ink,
+   tall italic serif display type, playful hand-drawn collage stickers.
+   ========================================================================== */
+
+:root {
+    --cream: #fffbf5;
+    --ink: #304254;
+    --ink-soft: #9aa5ae;
+    --text: #323232;
+    --paper: #efece2;
+    --nav-h: 64px;
+    --ease-slide: cubic-bezier(0.77, 0, 0.175, 1);
+    --serif: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+    --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--text);
+    overflow: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+img,
+video,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Top navigation
+   -------------------------------------------------------------------------- */
+
+.site-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: var(--nav-h);
+    padding: 0 20px;
+    background: var(--cream);
+}
+
+.nav-logo {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(48, 66, 84, 0.14);
+}
+
+.nav-logo svg {
+    width: 30px;
+    height: 30px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 3vw, 44px);
+    margin: 0 auto;
+}
+
+.nav-links a {
+    font-size: clamp(13px, 1.15vw, 16px);
+    color: var(--ink-soft);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.25s ease;
+}
+
+.nav-links a:hover {
+    color: var(--ink);
+}
+
+.nav-links a.is-active {
+    color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   Deck & slides
+   -------------------------------------------------------------------------- */
+
+.deck {
+    height: 100vh;
+    height: 100dvh;
+    will-change: transform;
+    transition: transform 0.9s var(--ease-slide);
+}
+
+.slide {
+    position: relative;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    background: var(--cream);
+}
+
+/* Shared type ---------------------------------------------------------------- */
+
+.slide-tag {
+    display: inline-block;
+    font-size: clamp(10px, 0.95vw, 13px);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: rgba(255, 251, 245, 0.72);
+    border: 1.5px solid rgba(48, 66, 84, 0.35);
+    border-radius: 999px;
+    padding: 6px 14px;
+    margin-bottom: 16px;
+}
+
+.slide-desc {
+    max-width: 46ch;
+    font-size: clamp(14px, 1.25vw, 18px);
+    line-height: 1.65;
+    color: #454545;
+    margin-top: 16px;
+}
+
+.slide-heading {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(40px, 6.4vw, 92px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--text);
+}
+
+.slide-kicker {
+    font-size: clamp(13px, 1.3vw, 19px);
+    line-height: 1.5;
+    color: var(--text);
+}
+
+.slide-cite {
+    font-size: clamp(12px, 1vw, 15px);
+    color: #6d6d6d;
+}
+
+/* --------------------------------------------------------------------------
+   Page 1 · Hero
+   -------------------------------------------------------------------------- */
+
+.slide-hero {
+    color: var(--cream);
+}
+
+.hero-media,
+.hero-media .hero-layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.hero-layer {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.4s ease;
+}
+
+.hero-layer.is-on {
+    opacity: 1;
+}
+
+.hero-shade {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(30, 30, 30, 0.18);
+}
+
+.hero-copy {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--nav-h) 24px 16px;
+}
+
+.hero-overline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(15px, 1.6vw, 23px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: clamp(14px, 2.4vh, 28px);
+}
+
+.hero-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(52px, 10.4vw, 152px);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    max-width: 16ch;
+}
+
+.hero-title .ch {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(0.35em);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hero-title .ch.is-in {
+    opacity: 1;
+    transform: none;
+}
+
+.hero-title .word {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.hero-sub {
+    margin-top: clamp(16px, 3vh, 30px);
+    font-size: clamp(13px, 1.3vw, 18px);
+    line-height: 1.6;
+    max-width: 52ch;
+    opacity: 0.92;
+}
+
+.hero-more {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 26px;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: var(--cream);
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.25s ease;
+}
+
+.hero-more:hover {
+    opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Page 2 · THEN · The Glossy Era — notebook paper background (img/3.jpg)
+   -------------------------------------------------------------------------- */
+
+.slide-era {
+    display: flex;
+    align-items: center;
+    padding: calc(var(--nav-h) + 12px) clamp(24px, 5vw, 84px) 40px clamp(150px, 17vw, 250px);
+    background:
+        linear-gradient(rgba(255, 251, 245, 0.18), rgba(255, 251, 245, 0.18)),
+        url("img/3.jpg") left center / cover no-repeat,
+        var(--cream);
+}
+
+.era-copy {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+}
+
+.era-copy .slide-kicker {
+    max-width: 34ch;
+    margin-bottom: 14px;
+}
+
+.era-copy .slide-cite {
+    margin-top: 22px;
+}
+
+.era-photo {
+    position: absolute;
+    overflow: hidden;
+    box-shadow: 0 18px 44px rgba(48, 66, 84, 0.22);
+}
+
+.era-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.era-photo-tall {
+    right: clamp(16px, 8vw, 150px);
+    top: 50%;
+    transform: translateY(-50%) rotate(1.5deg);
+    width: clamp(220px, 24vw, 360px);
+    height: clamp(300px, 62vh, 560px);
+}
+
+.era-photo-small {
+    right: clamp(12px, 4vw, 80px);
+    bottom: clamp(28px, 8vh, 80px);
+    transform: rotate(-3deg);
+    width: clamp(150px, 17vw, 250px);
+    height: clamp(110px, 22vh, 190px);
+}
+
+/* --------------------------------------------------------------------------
+   Page 3 · From Pages to Screens
+   -------------------------------------------------------------------------- */
+
+.slide-screens {
+    display: flex;
+    flex-direction: column;
+    padding: calc(var(--nav-h) + 10px) clamp(24px, 5vw, 84px) 36px;
+}
+
+.screens-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.screens-stage {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(20px, 3.4vw, 56px);
+    margin-top: clamp(12px, 2.6vh, 28px);
+    overflow: hidden;
+}
+
+.screens-video {
+    width: min(46vw, 640px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.screens-video video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 46vh;
+    object-fit: cover;
+    background: #000;
+    box-shadow: 0 18px 44px rgba(48, 66, 84, 0.2);
+}
+
+.screens-video figcaption {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(15px, 1.4vw, 20px);
+    color: var(--text);
+}
+
+.screens-laptop {
+    width: min(34vw, 460px);
+    aspect-ratio: 4 / 3;
+    max-height: 50vh;
+    transform: rotate(1.6deg);
+    overflow: hidden;
+    box-shadow: 0 18px 44px rgba(48, 66, 84, 0.22);
+}
+
+.screens-laptop img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.screens-desc {
+    margin-top: 12px;
+}
+
+.live-link {
+    display: inline-block;
+    align-self: flex-start;
+    margin-top: clamp(12px, 2.2vh, 22px);
+    font-size: clamp(13px, 1.1vw, 16px);
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    transition: color 0.25s ease;
+}
+
+.live-link:hover {
+    color: #16309a;
+}
+
+/* --------------------------------------------------------------------------
+   Page 4 · Fashion in the Feed
+   -------------------------------------------------------------------------- */
+
+.slide-feed {
+    display: flex;
+    flex-direction: column;
+    padding: calc(var(--nav-h) + 8px) clamp(24px, 4.4vw, 72px) 34px;
+}
+
+.feed-head .slide-kicker {
+    margin-top: 8px;
+}
+
+.feed-collage {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    margin-top: 8px;
+}
+
+.sticker {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 6px 14px rgba(48, 66, 84, 0.12));
+}
+
+/* Stickers that are real links: TikTok / REDnote / official website */
+.sticker-link {
+    position: absolute;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.sticker-link:hover,
+.sticker-link:focus-visible {
+    transform: scale(1.05) rotate(-1.5deg);
+    filter: drop-shadow(0 10px 20px rgba(48, 66, 84, 0.22));
+    z-index: 6;
+}
+
+.sticker-link:focus-visible {
+    outline: 2px dashed var(--ink);
+    outline-offset: 6px;
+}
+
+.sticker-tiktok {
+    left: 2%;
+    top: 0;
+    width: clamp(170px, 21vw, 300px);
+    z-index: 2;
+}
+
+.tiktok-word {
+    font-family: "Comic Sans MS", "Segoe Print", cursive;
+    font-size: 58px;
+    font-weight: 700;
+    font-style: italic;
+    fill: #2b46c4;
+    text-decoration: underline;
+}
+
+.sticker-rednote {
+    right: 3%;
+    top: 3%;
+    width: clamp(180px, 21vw, 310px);
+    z-index: 2;
+}
+
+.rednote-word {
+    font-family: var(--sans);
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    fill: #d9402f;
+    text-decoration: underline;
+}
+
+.rednote-bang {
+    font-family: var(--sans);
+    font-size: 56px;
+    font-weight: 700;
+    fill: #d9402f;
+}
+
+.sticker-insta {
+    left: 42%;
+    top: 3%;
+    width: clamp(170px, 20vw, 300px);
+    z-index: 2;
+}
+
+.insta-word {
+    font-family: "Comic Sans MS", "Segoe Print", cursive;
+    font-size: 42px;
+    font-weight: 700;
+    font-style: italic;
+    fill: #c13584;
+    text-decoration: underline;
+}
+
+.sticker-reader {
+    position: absolute;
+    left: 55%;
+    bottom: 1%;
+    transform: translateX(-50%);
+    width: clamp(200px, 26vw, 360px);
+    z-index: 4;
+}
+
+.sticker-arrow {
+    position: absolute;
+    right: 12%;
+    top: 38%;
+    bottom: auto;
+    width: clamp(130px, 16vw, 220px);
+}
+
+.arrow-word {
+    font-family: var(--sans);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    fill: #e2611b;
+}
+
+.sticker-site {
+    right: 3%;
+    bottom: 8%;
+    width: clamp(170px, 19vw, 280px);
+}
+
+.site-word {
+    font-family: var(--sans);
+    font-size: 25px;
+    fill: #fff;
+}
+
+.site-word-bold {
+    font-weight: 700;
+}
+
+/* Mini vogue.com mockup card */
+
+.vogue-card {
+    position: absolute;
+    left: 3%;
+    bottom: 1%;
+    width: clamp(240px, 24vw, 380px);
+    padding: 14px 18px 18px;
+    background: #fff;
+    transform: rotate(-2deg);
+    box-shadow: 0 18px 44px rgba(48, 66, 84, 0.24);
+    z-index: 3;
+}
+
+.vogue-url {
+    font-size: 10px;
+    text-align: center;
+    color: #8a8a8a;
+}
+
+.vogue-masthead {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(28px, 3vw, 42px);
+    letter-spacing: 0.12em;
+    text-align: center;
+    color: #121212;
+    border-bottom: 1px solid #e4e4e4;
+    padding-bottom: 6px;
+}
+
+.vogue-section {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #4a4a4a;
+    margin: 10px 0;
+}
+
+.vogue-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.vogue-grid img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+}
+
+.vogue-grid figcaption {
+    font-size: 9px;
+    line-height: 1.35;
+    color: #3c3c3c;
+    margin-top: 5px;
+}
+
+.feed-cite {
+    position: absolute;
+    right: clamp(24px, 4.4vw, 72px);
+    bottom: 34px;
+}
+
+/* Short desktop windows: compress the feed header and cap sticker sizes
+   by viewport height so the collage never collides with the intro text. */
+@media (min-width: 861px) and (max-height: 800px) {
+    .slide-feed .slide-heading {
+        font-size: clamp(36px, 5vw, 64px);
+    }
+
+    .feed-desc {
+        max-width: 62ch;
+        font-size: clamp(13px, 1.1vw, 16px);
+        margin-top: 10px;
+    }
+
+    .sticker-tiktok { width: clamp(150px, min(21vw, 34vh), 300px); }
+    .sticker-rednote { width: clamp(150px, min(21vw, 26vh), 310px); }
+    .sticker-insta { width: clamp(150px, min(20vw, 24vh), 300px); }
+    .sticker-reader { width: clamp(170px, min(26vw, 40vh), 360px); }
+    .sticker-arrow { width: clamp(110px, min(16vw, 20vh), 220px); }
+    .sticker-site { width: clamp(140px, min(19vw, 22vh), 280px); }
+    .vogue-card { width: clamp(200px, min(24vw, 27vh), 380px); }
+}
+
+/* --------------------------------------------------------------------------
+   Page 5 · NOW · The Digital Reader — notebook paper background (img/1.jpg)
+   -------------------------------------------------------------------------- */
+
+.slide-reader {
+    background:
+        url("img/1.jpg") left center / cover no-repeat,
+        var(--paper);
+    padding: calc(var(--nav-h) + 14px) clamp(24px, 5vw, 84px) 40px clamp(150px, 16vw, 240px);
+}
+
+.reader-copy {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+}
+
+.reader-actions {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 24px;
+}
+
+.pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    font-family: var(--sans);
+    font-size: clamp(13px, 1.1vw, 15px);
+    font-weight: 600;
+    color: var(--ink);
+    background: rgba(255, 251, 245, 0.92);
+    border: 2.5px solid var(--ink);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.pill-btn:hover {
+    background: var(--ink);
+    color: var(--cream);
+}
+
+.pill-btn:active {
+    transform: scale(0.95);
+}
+
+.like-btn {
+    transform: rotate(-2deg);
+}
+
+.like-btn svg {
+    width: 17px;
+    height: 17px;
+}
+
+.like-btn.is-liked {
+    border-color: #d9402f;
+    color: #d9402f;
+}
+
+.like-btn.is-liked svg path {
+    fill: #d9402f;
+    stroke: #d9402f;
+}
+
+.like-btn.is-liked:hover {
+    background: #d9402f;
+    color: #fff;
+}
+
+.like-count {
+    font-variant-numeric: tabular-nums;
+}
+
+.share-btn {
+    transform: rotate(1.5deg);
+}
+
+.share-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 34px;
+    z-index: 60;
+    transform: translate(-50%, 16px);
+    padding: 12px 24px;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 14px;
+    border-radius: 999px;
+    box-shadow: 0 10px 26px rgba(48, 66, 84, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.share-toast.is-show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.reader-heading {
+    position: relative;
+    z-index: 2;
+}
+
+.face {
+    position: absolute;
+    bottom: 3vh;
+    z-index: 1;
+}
+
+.face-left {
+    left: clamp(120px, 13vw, 230px);
+    width: clamp(160px, 20vw, 290px);
+}
+
+.face-right {
+    right: clamp(16px, 8vw, 180px);
+    width: clamp(150px, 20vw, 280px);
+}
+
+/* --------------------------------------------------------------------------
+   Page 6 · NEXT · The Future of Fashion Media
+   -------------------------------------------------------------------------- */
+
+.slide-future {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(18px, 3.6vh, 38px);
+    padding: calc(var(--nav-h) + 10px) clamp(24px, 6vw, 100px) 44px;
+}
+
+.future-head {
+    max-width: 720px;
+}
+
+.future-duo {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(16px, 2.6vw, 40px);
+}
+
+.future-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 0 1 360px;
+    padding: 16px;
+    background: #fff;
+    box-shadow: 0 18px 44px rgba(48, 66, 84, 0.18);
+}
+
+.future-print {
+    background: url("img/4.jpg") center / cover no-repeat, #fff;
+    transform: rotate(-1.6deg);
+}
+
+.future-print img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.future-card figcaption {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #3c3c3c;
+}
+
+.future-label {
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+}
+
+.future-plus {
+    font-size: clamp(28px, 3vw, 46px);
+    font-weight: 300;
+    color: var(--ink);
+}
+
+.future-digital {
+    transform: rotate(1.4deg);
+}
+
+.future-screen {
+    aspect-ratio: 4 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+    background: linear-gradient(135deg, #2c3e50, #1d2b38);
+    border-radius: 8px;
+}
+
+.future-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.future-dots span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 251, 245, 0.55);
+}
+
+.future-lines {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 11px;
+}
+
+.future-lines span {
+    height: 10px;
+    border-radius: 6px;
+    background: rgba(255, 251, 245, 0.28);
+}
+
+.future-lines span:nth-child(2) {
+    width: 72%;
+}
+
+.future-lines span:nth-child(3) {
+    width: 46%;
+}
+
+/* --------------------------------------------------------------------------
+   Page 7 · References
+   -------------------------------------------------------------------------- */
+
+.slide-refs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(20px, 4.6vh, 46px);
+    padding: var(--nav-h) clamp(24px, 8vw, 140px) 48px;
+}
+
+.refs-heading {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(44px, 5.6vw, 80px);
+    letter-spacing: 0.01em;
+    color: #1f1f1f;
+}
+
+.refs-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 3.4vh, 34px);
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.refs-list p {
+    font-size: clamp(14px, 1.35vw, 19px);
+    line-height: 1.6;
+    color: #2f2f2f;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 860px) {
+    :root {
+        --nav-h: 56px;
+    }
+
+    .site-nav {
+        gap: 12px;
+    }
+
+    .nav-logo {
+        width: 34px;
+        height: 34px;
+    }
+
+    .nav-links {
+        gap: 11px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Page 2 */
+    .slide-era {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: calc(var(--nav-h) + 8px) 5vw 40px 12vw;
+    }
+
+    .era-copy {
+        background: rgba(255, 251, 245, 0.88);
+        padding: 16px 18px;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(48, 66, 84, 0.12);
+    }
+
+    .era-photo-tall {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: rotate(1.5deg);
+        width: min(64vw, 300px);
+        height: min(52vh, 380px);
+        margin: 18px auto 0;
+    }
+
+    .era-photo-small {
+        right: 6vw;
+        bottom: 4vh;
+    }
+
+    /* Page 3 */
+    .screens-stage {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .screens-video {
+        width: min(88vw, 560px);
+    }
+
+    .screens-laptop {
+        display: none;
+    }
+
+    /* Page 4 */
+    .sticker-tiktok {
+        left: 2%;
+        top: 3%;
+        width: min(36vw, 26vh);
+    }
+
+    .sticker-rednote {
+        right: 2%;
+        top: 4%;
+        width: min(40vw, 30vh);
+    }
+
+    .sticker-insta {
+        left: 42%;
+        top: 1%;
+        width: min(26vw, 22vh);
+    }
+
+    .sticker-reader {
+        left: 4%;
+        top: 44%;
+        bottom: auto;
+        transform: none;
+        width: min(40vw, 40vh);
+    }
+
+    .sticker-arrow,
+    .sticker-site {
+        display: none;
+    }
+
+    .vogue-card {
+        left: auto;
+        right: 4%;
+        bottom: 2%;
+        width: min(52vw, 38vh, 300px);
+    }
+
+    .vogue-grid figcaption {
+        display: none;
+    }
+
+    .feed-cite {
+        left: 4%;
+        right: auto;
+        bottom: 12px;
+    }
+
+    /* Page 5 */
+    .slide-reader {
+        padding: calc(var(--nav-h) + 8px) 5vw 40px 12vw;
+    }
+
+    .reader-copy {
+        background: rgba(255, 251, 245, 0.9);
+        padding: 16px 18px;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(48, 66, 84, 0.12);
+    }
+
+    .reader-actions {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .face-left {
+        left: 30vw;
+        bottom: 10vh;
+    }
+
+    .face-right {
+        right: 4vw;
+        bottom: 3vh;
+    }
+
+    /* Page 6 */
+    .future-card {
+        flex: 0 0 auto;
+        width: min(40vw, 340px);
+        padding: 12px;
+    }
+
+    .future-print img,
+    .future-screen {
+        aspect-ratio: 16 / 9;
+    }
+
+    .future-plus {
+        font-size: 26px;
+    }
+}
+
+/* Small phones: keep every slide self-contained */
+@media (max-width: 560px) {
+    .hero-title {
+        font-size: clamp(40px, 13.5vw, 64px);
+    }
+
+    .hero-sub {
+        font-size: 12px;
+    }
+
+    .nav-links {
+        gap: 7px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .slide-desc {
+        font-size: 13px;
+    }
+
+    .era-photo-small {
+        display: none;
+    }
+
+    .vogue-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sticker-insta {
+        left: 38%;
+        top: 1%;
+        width: min(28vw, 22vh);
+    }
+
+    .sticker-rednote {
+        width: min(36vw, 30vh);
+    }
+
+    .sticker-reader {
+        display: none;
+    }
+
+    .vogue-card {
+        width: min(60vw, 38vh, 280px);
+    }
+
+    .face-left,
+    .face-right {
+        width: clamp(130px, 38vw, 180px);
+    }
+}
+
+/* Tiny landscape windows (short height): compress headers so the
+   collage and the card duo still fit without colliding. */
+@media (max-width: 860px) and (max-height: 660px) {
+    .slide-desc {
+        font-size: 11px;
+        max-width: 100%;
+        margin-top: 8px;
+    }
+
+    .slide-feed .slide-heading,
+    .slide-future .slide-heading {
+        font-size: 30px;
+    }
+
+    .feed-collage {
+        min-height: 240px;
+    }
+
+    .slide-future {
+        padding-bottom: 24px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced motion
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .deck {
+        transition: none;
+    }
+
+    .hero-layer,
+    .hero-title .ch {
+        transition: none;
+    }
+}
