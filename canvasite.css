@@ -328,9 +328,9 @@ svg {
 }
 
 .era-photo-small {
-    right: clamp(12px, 4vw, 80px);
-    bottom: clamp(28px, 8vh, 80px);
-    transform: rotate(-3deg);
+    right: clamp(12px, 11vw, 180px);
+    top: clamp(28px, 22vh, 320px);
+    transform: rotate(1deg);
     width: clamp(150px, 17vw, 250px);
     height: clamp(110px, 22vh, 190px);
 }
@@ -343,6 +343,7 @@ svg {
     display: flex;
     flex-direction: column;
     padding: calc(var(--nav-h) + 10px) clamp(24px, 5vw, 84px) 36px;
+    --screens-photo-h: min(58vh, 640px);
 }
 
 .screens-head {
@@ -365,32 +366,36 @@ svg {
 }
 
 .screens-video {
-    width: min(46vw, 640px);
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
+/* Portrait 9:16 video — sized by height so the tall frame fits the slide */
 .screens-video video {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    max-height: 46vh;
+    height: var(--screens-photo-h);
+    width: auto;
+    aspect-ratio: 9 / 16;
     object-fit: cover;
     background: #000;
     box-shadow: 0 18px 44px rgba(48, 66, 84, 0.2);
 }
 
 .screens-video figcaption {
+    max-width: 34ch;
     font-family: var(--serif);
     font-style: italic;
     font-size: clamp(15px, 1.4vw, 20px);
     color: var(--text);
 }
 
+/* Laptop photo matches the video height; img is cropped via object-fit: cover.
+   Sits slightly lower for a staggered, editorial rhythm. */
 .screens-laptop {
-    width: min(34vw, 460px);
-    aspect-ratio: 4 / 3;
-    max-height: 50vh;
+    height: var(--screens-photo-h);
+    width: min(24vw, 380px);
+    align-self: center;
+    margin-top: clamp(20px, 5vh, 48px);
     transform: rotate(1.6deg);
     overflow: hidden;
     box-shadow: 0 18px 44px rgba(48, 66, 84, 0.22);
@@ -495,18 +500,11 @@ svg {
 
 .rednote-word {
     font-family: var(--sans);
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 600;
     letter-spacing: 0.02em;
     fill: #d9402f;
     text-decoration: underline;
-}
-
-.rednote-bang {
-    font-family: var(--sans);
-    font-size: 56px;
-    font-weight: 700;
-    fill: #d9402f;
 }
 
 .sticker-insta {
@@ -518,7 +516,7 @@ svg {
 
 .insta-word {
     font-family: "Comic Sans MS", "Segoe Print", cursive;
-    font-size: 42px;
+    font-size: 40px;
     font-weight: 700;
     font-style: italic;
     fill: #c13584;
@@ -532,12 +530,15 @@ svg {
     transform: translateX(-50%);
     width: clamp(200px, 26vw, 360px);
     z-index: 4;
+    /* 1.png is opaque line art — multiply blends its white background into the paper */
+    mix-blend-mode: multiply;
+    filter: none;
 }
 
 .sticker-arrow {
     position: absolute;
-    right: 12%;
-    top: 38%;
+    right: 10%;
+    top: 46%;
     bottom: auto;
     width: clamp(130px, 16vw, 220px);
 }
@@ -767,6 +768,9 @@ svg {
     position: absolute;
     bottom: 3vh;
     z-index: 1;
+    /* 2.png / 3.png are opaque line art — multiply blends the white background into the paper */
+    mix-blend-mode: multiply;
+    filter: none;
 }
 
 .face-left {
@@ -995,7 +999,13 @@ svg {
     }
 
     .screens-video {
-        width: min(88vw, 560px);
+        width: auto;
+    }
+
+    .screens-video video {
+        height: min(52vh, 480px);
+        width: auto;
+        max-width: 88vw;
     }
 
     .screens-laptop {
