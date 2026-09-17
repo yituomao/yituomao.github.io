@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Now Playing · Fashion in the Feed</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            padding: 24px;
+            background: #16181d;
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        video {
+            height: min(86vh, 960px);
+            width: auto;
+            max-width: min(92vw, 540px);
+            border-radius: 10px;
+            background: #000;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55);
+        }
+
+        .caption {
+            font-style: italic;
+            font-size: clamp(14px, 1.6vw, 18px);
+            color: #e8e4da;
+            letter-spacing: 0.02em;
+        }
+
+        .back {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            color: #9aa0ab;
+            text-decoration: none;
+            border-bottom: 1px solid #3a3f48;
+            padding-bottom: 2px;
+            transition: color 0.2s ease;
+        }
+
+        .back:hover { color: #e8e4da; }
+    </style>
+</head>
+<body>
+    <video id="player" controls autoplay playsinline></video>
+    <p class="caption" id="caption"></p>
+    <a class="back" href="index.html">Back to the magazine</a>
+
+    <script>
+        var videos = {
+            tiktok: { src: 'video/tiktok.mp4', title: 'fall 2026 trends \u00b7 TikTok, now playing' },
+            xhs:    { src: 'video/xhs.mp4',    title: 'fall 2026 trends \u00b7 REDnote, now playing' }
+        };
+
+        var key = new URLSearchParams(location.search).get('v');
+        var item = videos[key] || videos.tiktok;
+        var player = document.getElementById('player');
+
+        player.src = item.src;
+        document.getElementById('caption').textContent = item.title;
+        document.title = item.title + ' \u00b7 Fashion in the Feed';
+    </script>
+</body>
+</html>
