@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FROM GLOSSY TO DIGITAL — Julia Liao</title>
     <meta name="description" content="FROM GLOSSY TO DIGITAL. Produced by Julia Liao. How fashion knowledge moved from printed magazines to short videos, websites and digital media.">
-    <link rel="stylesheet" href="canvasite.css?v=1.1">
+    <link rel="stylesheet" href="canvasite.css?v=1.2">
 </head>
 <body>
     <!-- Top navigation -->
@@ -52,7 +52,8 @@
                 <p class="slide-cite">Cristófol Rodríguez, Cabezuelo Lorenzo &amp; Paniagua Rojano (2017)</p>
             </div>
             <figure class="era-photo era-photo-tall">
-                <img src="img/2.jpg" alt="A glossy fashion magazine cover lying open on a desk">
+                <img class="era-photo-bg" src="img/2.jpg" alt="A glossy fashion magazine cover lying open on a desk">
+                <img class="era-photo-top" src="img/5.jpg" alt="A VISION fashion magazine cover surrounded by other issues">
             </figure>
             <figure class="era-photo era-photo-small">
                 <img src="img/7.jpg" alt="Shelves of fashion magazines at a newsstand">
@@ -70,13 +71,17 @@
             </div>
             <p class="slide-desc screens-desc">Magazines opened websites of their own. The printed page became a link, and the reader became a visitor — able to watch, click and explore instead of only turning pages.</p>
             <div class="screens-stage">
-                <figure class="screens-video">
+               
+<figure class="screens-laptop">
+                    <img src="img/6.jpg" alt="A laptop showing a fashion brand website beside an open magazine">
+                </figure>
+                <!-- Turn arrow: video leads to the website -->
+                <img class="screens-arrow" src="img/a.jpg" alt="">
+ <figure class="screens-video">
                     <video src="video/1.mp4" controls playsinline preload="metadata" poster="img/11.jpg"></video>
                     <figcaption>fall 2026 fashion trends <span aria-hidden="true">·</span> now playing on a screen, not on paper</figcaption>
                 </figure>
-                <figure class="screens-laptop">
-                    <img src="img/6.jpg" alt="A laptop showing a fashion brand website beside an open magazine">
-                </figure>
+                
             </div>
             <a class="live-link" href="https://www.vogue.com" target="_blank" rel="noopener">Browse a live fashion website <span aria-hidden="true">↗</span></a>
         </section>
@@ -192,14 +197,32 @@
             </div>
             <div class="future-duo">
                 <figure class="future-card future-print">
-                    <img src="img/2.jpg" alt="A glossy print magazine cover">
+                    <div class="print-visual">
+                        <img src="img/2.jpg" alt="A glossy print magazine cover">
+                        <div class="print-collage" aria-hidden="true">
+                            <img class="collage-a" src="img/5.jpg" alt="">
+                            <img class="collage-b" src="img/11.jpg" alt="">
+                        </div>
+                    </div>
                     <figcaption><span class="future-label">Print</span> slow · tactile · collectible</figcaption>
                 </figure>
                 <span class="future-plus" aria-hidden="true">+</span>
                 <figure class="future-card future-digital">
                     <div class="future-screen" aria-hidden="true">
                         <div class="future-dots"><span></span><span></span><span></span></div>
-                        <div class="future-lines"><span></span><span></span><span></span></div>
+                        <div class="future-site">
+                            <p class="future-masthead">VOGUE</p>
+                            <p class="future-navline">Fashion · Beauty · Runway · Culture</p>
+                            <div class="future-scroll">
+                                <figure class="future-hero"><img src="img/11.jpg" alt=""></figure>
+                                <div class="future-thumbs">
+                                    <img src="img/5.jpg" alt="">
+                                    <img src="img/6.jpg" alt="">
+                                    <img src="img/7.jpg" alt="">
+                                </div>
+                                <figure class="future-hero"><img src="img/6.jpg" alt=""></figure>
+                            </div>
+                        </div>
                     </div>
                     <figcaption><span class="future-label">Digital</span> instant · infinite · interactive</figcaption>
                 </figure>
@@ -219,6 +242,6 @@
 
     <div class="share-toast" id="shareToast" role="status" aria-live="polite"></div>
 
-    <script src="canvasite.js"></script>
+    <script src="canvasite.js?v=1.2"></script>
 </body>
 </html>

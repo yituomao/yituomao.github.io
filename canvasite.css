@@ -327,6 +327,27 @@ svg {
     height: clamp(300px, 62vh, 560px);
 }
 
+/* Collage: 2.jpg fills the frame as the backdrop, 5.jpg is pasted on top like a print */
+.era-photo-tall img {
+    position: absolute;
+}
+
+.era-photo-tall .era-photo-bg {
+    width: 100%;
+    height: 100%;
+}
+
+.era-photo-tall .era-photo-top {
+    top: auto;
+    left: 18%;
+    bottom: 3%;
+    width: 60%;
+    height: 40%;
+    /* border: 6px solid #fffbf5; */
+    box-shadow: 0 10px 26px rgba(48, 66, 84, 0.28);
+    transform: rotate(0.5deg);
+}
+
 .era-photo-small {
     right: clamp(12px, 11vw, 180px);
     top: clamp(28px, 22vh, 320px);
@@ -405,6 +426,16 @@ svg {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* Tape-arrow photo (img/a.jpg) between the video and the laptop photo.
+   It's an opaque JPG — multiply blends the white background into the paper. */
+.screens-arrow {
+    flex: 0 0 auto;
+    align-self: center;
+    width: clamp(90px, 10vw, 150px);
+    mix-blend-mode: multiply;
+    filter: none;
 }
 
 .screens-desc {
@@ -829,6 +860,36 @@ svg {
     object-fit: cover;
 }
 
+/* Magazine snapshots pasted onto the print card */
+.print-visual {
+    position: relative;
+}
+
+.print-collage {
+    position: absolute;
+    inset: 0;
+}
+
+.print-collage img {
+    position: absolute;
+    border: 5px solid #fff;
+    box-shadow: 0 8px 20px rgba(48, 66, 84, 0.28);
+}
+
+.print-collage .collage-a {
+    width: 44%;
+    top: 7%;
+    left: 6%;
+    transform: rotate(-3deg);
+}
+
+.print-collage .collage-b {
+    width: 50%;
+    bottom: 9%;
+    right: 6%;
+    transform: rotate(2.5deg);
+}
+
 .future-card figcaption {
     display: flex;
     align-items: center;
@@ -863,6 +924,7 @@ svg {
     padding: 14px;
     background: linear-gradient(135deg, #2c3e50, #1d2b38);
     border-radius: 8px;
+    overflow: hidden;
 }
 
 .future-dots {
@@ -877,26 +939,85 @@ svg {
     background: rgba(255, 251, 245, 0.55);
 }
 
-.future-lines {
+/* Mini vogue.com homepage shown on the digital card.
+   Masthead and nav stay fixed; the images below scroll like an endless feed. */
+.future-site {
     flex: 1;
+    min-height: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 11px;
+    gap: 8px;
+    padding: 10px 10px 8px;
+    background: #fffbf5;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-.future-lines span {
-    height: 10px;
-    border-radius: 6px;
-    background: rgba(255, 251, 245, 0.28);
+.future-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(48, 66, 84, 0.35) transparent;
 }
 
-.future-lines span:nth-child(2) {
-    width: 72%;
+.future-scroll::-webkit-scrollbar {
+    width: 5px;
 }
 
-.future-lines span:nth-child(3) {
-    width: 46%;
+.future-scroll::-webkit-scrollbar-thumb {
+    background: rgba(48, 66, 84, 0.3);
+    border-radius: 4px;
+}
+
+.future-masthead {
+    font-family: Didot, "Bodoni MT", "Playfair Display", Georgia, serif;
+    font-size: clamp(18px, 2vw, 26px);
+    letter-spacing: 0.28em;
+    text-align: center;
+    color: #1a1a1a;
+}
+
+.future-navline {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #6b6b6b;
+    border-top: 1px solid #e3ded4;
+    border-bottom: 1px solid #e3ded4;
+    padding: 3px 0;
+}
+
+.future-hero {
+    flex: none;
+    margin: 0;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+}
+
+.future-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.future-thumbs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+.future-thumbs img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
 }
 
 /* --------------------------------------------------------------------------
@@ -1008,7 +1129,8 @@ svg {
         max-width: 88vw;
     }
 
-    .screens-laptop {
+    .screens-laptop,
+    .screens-arrow {
         display: none;
     }
 
