@@ -137,7 +137,7 @@ svg {
 }
 
 .slide-desc {
-    max-width: 46ch;
+    max-width:66ch;
     font-size: clamp(14px, 1.25vw, 18px);
     line-height: 1.65;
     color: #454545;
@@ -295,7 +295,7 @@ svg {
 .era-copy {
     position: relative;
     z-index: 2;
-    max-width: 560px;
+    max-width: 860px;
 }
 
 .era-copy .slide-kicker {
@@ -305,6 +305,14 @@ svg {
 
 .era-copy .slide-cite {
     margin-top: 22px;
+}
+
+/* The Glossy Era runs a long academic paragraph — tighten it to fit the slide */
+.slide-era .slide-desc {
+    max-width: 96ch;
+    font-size: clamp(12.5px, 1.05vw, 15px);
+    line-height: 1.6;
+    margin-top: 12px;
 }
 
 .era-photo {
@@ -1049,10 +1057,15 @@ svg {
     text-align: center;
 }
 
-.refs-list p {
-    font-size: clamp(14px, 1.35vw, 19px);
-    line-height: 1.6;
-    color: #2f2f2f;
+/* Reference screenshot blends into the page — only the text shows */
+.refs-image {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: min(760px, 88vw);
+    max-height: min(64vh, 640px);
+    margin: 0 auto;
+    mix-blend-mode: multiply;
 }
 
 /* --------------------------------------------------------------------------
