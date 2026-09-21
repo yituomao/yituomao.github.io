@@ -116,10 +116,49 @@
 
     /* ---------------- input ---------------- */
 
+    /* Lock the slide deck at 100%: block every zoom gesture we can intercept
+       (Ctrl/Cmd + wheel, keyboard zoom shortcuts, pinch gestures on touch
+       screens). Browser-menu and OS-level zoom cannot be prevented. */
+    window.addEventListener("wheel", function (event) {
+        if (event.ctrlKey || event.metaKey) event.preventDefault();
+    }, { passive: false, capture: true });
+
+    window.addEventListener("keydown", function (event) {
+        if (!(event.ctrlKey || event.metaKey)) return;
+        var key = event.key.toLowerCase();
+        if (key === "+" || key === "=" || key === "-" || key === "_" || key === "0") {
+            event.preventDefault();
+        }
+    }, { capture: true });
+
+    window.addEventListener("touchmove", function (event) {
+        if (event.touches && event.touches.length > 1) event.preventDefault();
+    }, { passive: false, capture: true });
+
+    window.addEventListener("gesturestart", function (event) {
+        event.preventDefault();
+    }, { passive: false, capture: true });
+
     window.addEventListener("wheel", function (event) {
         if (locked) return;
         var delta = event.deltaY;
         if (Math.abs(delta) < 24) return;
+
+        // If the wheel starts inside a scrollable region that can still move,
+        // let it scroll there instead of turning the page.
+        var node = event.target;
+        while (node && node !== document.body) {
+            if (node.scrollHeight > node.clientHeight + 2) {
+                var overflowY = window.getComputedStyle(node).overflowY;
+                if (overflowY === "auto" || overflowY === "scroll") {
+                    var atTop = node.scrollTop <= 0;
+                    var atBottom = node.scrollTop + node.clientHeight >= node.scrollHeight - 2;
+                    if ((delta > 0 && !atBottom) || (delta < 0 && !atTop)) return;
+                }
+            }
+            node = node.parentElement;
+        }
+
         event.preventDefault();
         step(delta > 0 ? 1 : -1);
     }, { passive: false });

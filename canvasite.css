@@ -32,6 +32,8 @@ body {
     background: var(--cream);
     color: var(--text);
     overflow: hidden;
+    /* Panning only — pinch-zoom is disabled for this presentation deck */
+    touch-action: pan-x pan-y;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -137,9 +139,9 @@ svg {
 }
 
 .slide-desc {
-    max-width:66ch;
+    max-width:86ch;
     font-size: clamp(14px, 1.25vw, 18px);
-    line-height: 1.65;
+    line-height: 1.45;
     color: #454545;
     margin-top: 16px;
 }
@@ -333,6 +335,20 @@ svg {
     transform: translateY(-50%) rotate(1.5deg);
     width: clamp(220px, 24vw, 360px);
     height: clamp(300px, 62vh, 560px);
+    overflow: visible;
+}
+
+.era-photo-tall figcaption {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: clamp(11px, 0.9vw, 13px);
+    color: #6f6f6f;
+    white-space: nowrap;
 }
 
 /* Collage: 2.jpg fills the frame as the backdrop, 5.jpg is pasted on top like a print */
@@ -377,7 +393,7 @@ svg {
 
 .screens-head {
     display: flex;
-    align-items: baseline;
+    /* align-items: baseline; */
     justify-content: space-between;
     gap: 20px;
     flex-wrap: wrap;
@@ -391,21 +407,31 @@ svg {
     justify-content: center;
     gap: clamp(20px, 3.4vw, 56px);
     margin-top: clamp(12px, 2.6vh, 28px);
-    overflow: hidden;
+    /* overflow: hidden; */
 }
+.screens-stage img{
+    width: 200px;
+    height: 300px;
 
+}
+.screens-stage .screens-arrow{
+    aspect-ratio: unset;
+}
 .screens-video {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-/* Portrait 9:16 video — sized by height so the tall frame fits the slide */
-.screens-video video {
+/* Portrait 9:16 video — explicit width AND height so the box can never be
+   stretched by the file's intrinsic size; contain shows the whole frame. */
+.screens-stage video {
     height: var(--screens-photo-h);
-    width: auto;
-    aspect-ratio: 9 / 16;
-    object-fit: cover;
+    /* width: calc(var(--screens-photo-h) * 9 / 16); */
+    width: 200px;
+    height: 300px;
+    /* max-width: none; */
+    /* object-fit: contain; */
     background: #000;
     box-shadow: 0 18px 44px rgba(48, 66, 84, 0.2);
 }
@@ -425,7 +451,7 @@ svg {
     width: min(24vw, 380px);
     align-self: center;
     margin-top: clamp(20px, 5vh, 48px);
-    transform: rotate(1.6deg);
+   
     overflow: hidden;
     box-shadow: 0 18px 44px rgba(48, 66, 84, 0.22);
 }
@@ -434,6 +460,21 @@ svg {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* Caption under the bare laptop photo (Page 3) */
+.screens-laptop-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.screens-laptop-cap {
+    margin-top: 8px;
+    font-family: var(--sans);
+    font-size: clamp(11px, 0.9vw, 13px);
+    color: #6f6f6f;
+    white-space: nowrap;
 }
 
 /* Tape-arrow photo (img/a.jpg) between the video and the laptop photo.
@@ -620,6 +661,15 @@ svg {
     z-index: 3;
 }
 
+.vogue-card-cap {
+    margin-top: 10px;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: clamp(11px, 0.9vw, 13px);
+    color: #6f6f6f;
+    white-space: nowrap;
+}
+
 .vogue-url {
     font-size: 10px;
     text-align: center;
@@ -698,16 +748,26 @@ svg {
    -------------------------------------------------------------------------- */
 
 .slide-reader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background:
         url("img/1.jpg") left center / cover no-repeat,
         var(--paper);
-    padding: calc(var(--nav-h) + 14px) clamp(24px, 5vw, 84px) 40px clamp(150px, 16vw, 240px);
+    padding: calc(var(--nav-h) + 14px) clamp(24px, 5vw, 84px) 40px clamp(120px, 12vw, 200px);
 }
 
 .reader-copy {
     position: relative;
     z-index: 2;
-    max-width: 560px;
+    width: min(620px, 100%);
+    text-align: center;
+}
+
+.reader-copy .slide-desc {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .reader-actions {
@@ -715,6 +775,7 @@ svg {
     z-index: 3;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 18px;
     margin-top: 24px;
 }
@@ -813,13 +874,13 @@ svg {
 }
 
 .face-left {
-    left: clamp(120px, 13vw, 230px);
-    width: clamp(160px, 20vw, 290px);
+    left: clamp(108px, 10.5vw, 190px);
+    width: clamp(140px, 15vw, 230px);
 }
 
 .face-right {
-    right: clamp(16px, 8vw, 180px);
-    width: clamp(150px, 20vw, 280px);
+    right: clamp(14px, 3vw, 60px);
+    width: clamp(140px, 15vw, 230px);
 }
 
 /* --------------------------------------------------------------------------
@@ -829,29 +890,37 @@ svg {
 .slide-future {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: clamp(18px, 3.6vh, 38px);
-    padding: calc(var(--nav-h) + 10px) clamp(24px, 6vw, 100px) 44px;
+    justify-content: safe center;
+    gap: clamp(14px, 2.6vh, 26px);
+    padding: calc(var(--nav-h) + 10px) clamp(20px, 3vw, 56px) 44px;
+    overflow-y: auto;
 }
 
 .future-head {
     max-width: 720px;
 }
 
+.future-head .slide-heading {
+    font-size: clamp(34px, 4.6vw, 66px);
+}
+
 .future-duo {
-    flex: 1;
-    min-height: 0;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: clamp(16px, 2.6vw, 40px);
+    gap: clamp(16px, 2vw, 32px);
 }
 
 .future-card {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    flex: 0 1 360px;
+    flex: 1 1 0;
+    max-width: 420px;
     padding: 16px;
     background: #fff;
     box-shadow: 0 18px 44px rgba(48, 66, 84, 0.18);
@@ -1052,7 +1121,8 @@ svg {
     display: flex;
     flex-direction: column;
     gap: clamp(16px, 3.4vh, 34px);
-    max-width: 780px;
+    width: 80%;
+    max-width: 1280px;
     margin: 0 auto;
     text-align: center;
 }
@@ -1060,10 +1130,10 @@ svg {
 /* Reference screenshot blends into the page — only the text shows */
 .refs-image {
     display: block;
-    width: auto;
+    width: 80%;
     height: auto;
-    max-width: min(760px, 88vw);
-    max-height: min(64vh, 640px);
+    max-width: min(1240px, 97vw);
+    max-height: min(86vh, 1100px);
     margin: 0 auto;
     mix-blend-mode: multiply;
 }
@@ -1137,9 +1207,9 @@ svg {
     }
 
     .screens-video video {
-        height: min(52vh, 480px);
-        width: auto;
-        max-width: 88vw;
+        height: min(52vh, 480px, calc(88vw * 16 / 9));
+        width: calc(min(52vh, 480px, calc(88vw * 16 / 9)) * 9 / 16);
+        max-width: none;
     }
 
     .screens-laptop,
@@ -1214,12 +1284,12 @@ svg {
     }
 
     .face-left {
-        left: 30vw;
-        bottom: 10vh;
+        left: 12.5vw;
+        bottom: 3vh;
     }
 
     .face-right {
-        right: 4vw;
+        right: 2vw;
         bottom: 3vh;
     }
 
