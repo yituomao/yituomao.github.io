@@ -410,8 +410,8 @@ svg {
     /* overflow: hidden; */
 }
 .screens-stage img{
-    width: 200px;
-    height: 300px;
+    width: 300px;
+    height:400px;
 
 }
 .screens-stage .screens-arrow{
@@ -428,8 +428,8 @@ svg {
 .screens-stage video {
     height: var(--screens-photo-h);
     /* width: calc(var(--screens-photo-h) * 9 / 16); */
-    width: 200px;
-    height: 300px;
+    width: 300px;
+    height: 400px;
     /* max-width: none; */
     /* object-fit: contain; */
     background: #000;
@@ -874,7 +874,7 @@ svg {
 }
 
 .face-left {
-    left: clamp(108px, 10.5vw, 190px);
+    left: clamp(128px, 12.5vw, 220px);
     width: clamp(140px, 15vw, 230px);
 }
 
@@ -891,7 +891,7 @@ svg {
     display: flex;
     flex-direction: column;
     justify-content: safe center;
-    gap: clamp(14px, 2.6vh, 26px);
+    gap: clamp(18px, 3.6vh, 38px);
     padding: calc(var(--nav-h) + 10px) clamp(20px, 3vw, 56px) 44px;
     overflow-y: auto;
 }
@@ -900,14 +900,11 @@ svg {
     max-width: 720px;
 }
 
-.future-head .slide-heading {
-    font-size: clamp(34px, 4.6vw, 66px);
-}
-
 .future-duo {
-    flex: 0 0 auto;
+    flex: 1;
+    min-height: 0;
     width: 100%;
-    max-width: 980px;
+    max-width: 1140px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -920,7 +917,7 @@ svg {
     flex-direction: column;
     gap: 12px;
     flex: 1 1 0;
-    max-width: 420px;
+    max-width: 520px;
     padding: 16px;
     background: #fff;
     box-shadow: 0 18px 44px rgba(48, 66, 84, 0.18);
@@ -1122,7 +1119,7 @@ svg {
     flex-direction: column;
     gap: clamp(16px, 3.4vh, 34px);
     width: 80%;
-    max-width: 1280px;
+    max-width: 1100px;
     margin: 0 auto;
     text-align: center;
 }
