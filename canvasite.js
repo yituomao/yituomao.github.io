@@ -18,6 +18,22 @@
     var sceneIndex = 0;
     var heroLayers = Array.prototype.slice.call(document.querySelectorAll(".hero-layer"));
 
+    /* ---------------- stage scaling ---------------- */
+
+    /* Desktop slides render on a fixed 1920x1080 design canvas that is
+       uniformly zoomed to fit the window, so every screen size shows the
+       exact same layout, only scaled. Backgrounds stay full-bleed. */
+    var DESIGN_W = 1920;
+    var DESIGN_H = 1080;
+
+    function fitStage() {
+        var scale = Math.min(window.innerWidth / DESIGN_W, window.innerHeight / DESIGN_H);
+        document.documentElement.style.setProperty("--stage-scale", scale.toFixed(4));
+    }
+
+    fitStage();
+    window.addEventListener("resize", fitStage);
+
     /* ---------------- deck position ---------------- */
 
     function goTo(index) {
